@@ -38,14 +38,14 @@ jobs:
 
     - name: Initialize ROM Manifest
       run: |
-        repo init -u git://github.com/Just-CAF/platform_manifest.git -b q
+        repo init -u https://github.com/Corvus-Q/android_manifest.git -b 10
         git clone https://github.com/whatawurst/android_device_sony_poplar.git -b lineage-17.1 device/sony/poplar
         git clone https://github.com/whatawurst/android_vendor_sony_poplar.git -b lineage-17.1 vendor/sony/poplar
         git clone https://github.com/whatawurst/android_kernel_sony_msm8998.git -b lineage-17.1 kernel/sony/msm8998
 
     - name: Sync ROM Source
       run: |
-        repo sync -c --no-tags --no-clone-bundle -j$(nproc --all)
+        repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle
 
     - name: Setup Environment
       run: |
